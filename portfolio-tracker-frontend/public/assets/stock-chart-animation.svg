@@ -1,0 +1,61 @@
+<svg width="700" height="100%" xmlns="http://www.w3.org/2000/svg" style="background: transparent;">
+  <g id="candlestick-group" transform="translate(50, 50)">
+    
+    <!-- Candlestick 5 -->
+    <g transform="translate(160, 0)">
+      <line x1="10" x2="10" y1="15" y2="80" stroke="black" stroke-width="2" />
+      <rect x="0" y="35" width="20" height="30" fill="green">
+        <animate attributeName="y" values="35;25;45;35" dur="2.2s" repeatCount="indefinite" />
+        <animate attributeName="height" values="30;40;20;30" dur="2.2s" repeatCount="indefinite" />
+      </rect>
+    </g>
+    <!-- Candlestick 6 -->
+    <g transform="translate(200, 0)">
+      <line x1="10" x2="10" y1="25" y2="95" stroke="black" stroke-width="2" />
+      <rect x="0" y="55" width="20" height="25" fill="red">
+        <animate attributeName="y" values="55;45;65;55" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="height" values="25;35;15;25" dur="2s" repeatCount="indefinite" />
+      </rect>
+    </g>
+    <!-- Candlestick 7 -->
+    <g transform="translate(240, 0)">
+      <line x1="10" x2="10" y1="20" y2="100" stroke="black" stroke-width="2" />
+      <rect x="0" y="50" width="20" height="30" fill="green">
+        <animate attributeName="y" values="50;40;60;50" dur="2.5s" repeatCount="indefinite" />
+        <animate attributeName="height" values="30;40;20;30" dur="2.5s" repeatCount="indefinite" />
+      </rect>
+    </g>
+    <!-- Candlestick 8 -->
+    <g transform="translate(280, 0)">
+      <line x1="10" x2="10" y1="15" y2="90" stroke="black" stroke-width="2" />
+      <rect x="0" y="40" width="20" height="35" fill="red">
+        <animate attributeName="y" values="40;30;50;40" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="height" values="35;45;25;35" dur="3s" repeatCount="indefinite" />
+      </rect>
+    </g>
+    <!-- Candlestick 9 -->
+    <g transform="translate(320, 0)">
+      <line x1="10" x2="10" y1="10" y2="100" stroke="black" stroke-width="2" />
+      <rect x="0" y="30" width="20" height="50" fill="green">
+        <animate attributeName="y" values="30;20;40;30" dur="3.5s" repeatCount="indefinite" />
+        <animate attributeName="height" values="50;60;40;50" dur="3.5s" repeatCount="indefinite" />
+      </rect>
+    </g>
+    <!-- Candlestick 10 -->
+    <g transform="translate(360, 0)">
+      <line x1="10" x2="10" y1="20" y2="110" stroke="black" stroke-width="2" />
+      <rect x="0" y="40" width="20" height="50" fill="red">
+        <animate attributeName="y" values="40;30;50;40" dur="4s" repeatCount="indefinite" />
+        <animate attributeName="height" values="50;60;40;50" dur="4s" repeatCount="indefinite" />
+      </rect>
+    </g>
+    <!-- Candlestick 11 -->
+    <g transform="translate(400, 0)">
+      <line x1="10" x2="10" y1="25" y2="120" stroke="black" stroke-width="2" />
+      <rect x="0" y="50" width="20" height="40" fill="green">
+        <animate attributeName="y" values="50;40;60;50" dur="3.8s" repeatCount="indefinite" />
+        <animate attributeName="height" values="40;50;30;40" dur="3.8s" repeatCount="indefinite" />
+      </rect>
+    </g>
+  </g>
+</svg>
