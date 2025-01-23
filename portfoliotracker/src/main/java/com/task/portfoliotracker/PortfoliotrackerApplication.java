@@ -1,13 +1,13 @@
-package com.panda.portfolio_tracker;
+package com.task.portfoliotracker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PortfolioTrackerAppApplication {
+public class PortfoliotrackerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PortfolioTrackerAppApplication.class, args);
+		SpringApplication.run(PortfoliotrackerApplication.class, args);
 	}
 
 }

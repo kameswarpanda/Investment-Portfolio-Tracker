@@ -1,10 +1,12 @@
-package com.panda.portfolio_tracker.entity;
+package com.task.portfoliotracker.entity;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Entity
@@ -14,15 +16,12 @@ public class Stock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false, unique = true)
     private String ticker;
+    private String stockName;
+    private double currentPrice;
+    private int quantity;
 
-    @Column(nullable = false)
-    private Double buyPrice;
-
-    @Column(nullable = false)
-    private Integer quantity;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

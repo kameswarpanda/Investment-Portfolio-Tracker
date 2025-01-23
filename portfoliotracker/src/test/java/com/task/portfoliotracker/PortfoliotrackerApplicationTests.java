@@ -1,10 +1,10 @@
-package com.panda.portfolio_tracker;
+package com.task.portfoliotracker;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PortfolioTrackerAppApplicationTests {
+class PortfoliotrackerApplicationTests {
 
 	@Test
 	void contextLoads() {
