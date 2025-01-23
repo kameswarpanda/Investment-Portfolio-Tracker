@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { MasterService } from '../../services/master.service';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +10,23 @@ import { RouterLink } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  email: string = '';
-  password: string = '';
+  loginObj:any = {
+    "email": "",
+    "password": ""
+  };
 
-  constructor() {}
-
+  MasterSrv = inject(MasterService);
+  router = inject(Router);
+  
   onSubmit(): void {
-    if (!this.email || !this.password) {
-      alert('Please enter your email and password!');
-      return;
-    }
-    console.log('Login form submitted!', { email: this.email, password: this.password });
-    alert('Login successful!'); // Replace with your authentication logic
+
+    this.MasterSrv.login(this.loginObj).subscribe((res:any  ) => {
+      if(res.result){
+        localStorage.setItem('stockUser', JSON.stringify(res.userId));
+        this.router.navigateByUrl('/portfolio-details');
+      }else{
+        alert('incorrect email or password');
+      }
+    });
   }
 }

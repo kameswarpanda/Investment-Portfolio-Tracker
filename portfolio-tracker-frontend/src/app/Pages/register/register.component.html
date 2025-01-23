@@ -1,4 +1,4 @@
-  <div class="container d-flex justify-content-center align-items-center mt-4">
+  <div class="container d-flex justify-content-center align-items-center mt-5">
     <div class="card shadow-lg p-4 register-card">
       <h2 class="text-center text-black mb-4">Register</h2>
       <form (ngSubmit)="onSubmit()">
@@ -9,8 +9,8 @@
             id="name"
             class="form-control"
             placeholder="Enter your full name"
-            [(ngModel)]="name"
-            name="name"
+            [(ngModel)]="registrationObj.fullName"
+            name="fullName"
             required
           />
         </div>
@@ -21,7 +21,7 @@
             id="email"
             class="form-control"
             placeholder="Enter your email"
-            [(ngModel)]="email"
+            [(ngModel)]="registrationObj.email"
             name="email"
             required
           />
@@ -34,12 +34,12 @@
               id="password"
               class="form-control"
               placeholder="Create a password"
-              [(ngModel)]="password"
+              [(ngModel)]="registrationObj.password"
               name="password"
               required
             />
           </div>
-          <div class="form-group flex-grow-1">
+          <!-- <div class="form-group flex-grow-1">
             <label for="confirmPassword" class="form-label"
               >Confirm Password</label
             >
@@ -52,14 +52,14 @@
               name="confirmPassword"
               required
             />
-          </div>
+          </div> -->
         </div>
         <button type="submit" class="btn btn-success w-100">Register</button>
       </form>
       <div class="text-center mt-3">
         <p>
           Already have an account?
-          <a routerLink="/login" class="text-decoration-none">Login</a>
+          <a routerLink="/home/login" class="text-decoration-none">Login</a>
         </p>
       </div>
     </div>

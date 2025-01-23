@@ -1,3 +1,60 @@
+ /* for nav bar styles */
+/* Navbar Background */
+.custom-navbar {
+  background: linear-gradient(90deg, #343a40, #212529);
+  border-bottom: 2px solid #4caf50;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(76, 175, 80, 0.8);
+}
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ddd !important;
+  margin: 0 10px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Navbar Link Hover Effect */
+.navbar-nav .nav-link:hover {
+  color: #4caf50 !important;
+  background-color: rgba(255, 193, 7, 0.1);
+  border-radius: 5px;
+}
+
+/* Active Link Style */
+.active-link {
+  color: #4caf50 !important;
+  border-bottom: 2px solid #4caf50;
+}
+
+/* Toggler Button */
+.navbar-toggler {
+  border: none;
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+}
+
 /* General Styles */
 .home-container {
   font-family: 'Poppins', sans-serif;
@@ -147,3 +204,5 @@
     transform: translateY(-20px);
   }
 }
+
+

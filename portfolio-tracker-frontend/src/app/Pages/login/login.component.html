@@ -9,7 +9,7 @@
           id="email"
           class="form-control"
           placeholder="Enter your email"
-          [(ngModel)]="email"
+          [(ngModel)]="loginObj.email"
           name="email"
           required
         />
@@ -21,7 +21,7 @@
           id="password"
           class="form-control"
           placeholder="Enter your password"
-          [(ngModel)]="password"
+          [(ngModel)]="loginObj.password"
           name="password"
           required
         />
@@ -29,14 +29,14 @@
       <button type="submit" class="btn btn-success w-100">Login</button>
     </form>
     <div class="text-center mt-3">
-      <a routerLink="/forgetpassword" class="text-decoration-none"
+      <a routerLink="/home/forgetpassword" class="text-decoration-none"
         >Forgot Password?</a
       >
     </div>
     <div class="text-center mt-3">
       <p>
         Don't have an account?
-        <a routerLink="/register" class="text-decoration-none">Register</a>
+        <a routerLink="/home/register" class="text-decoration-none">Register</a>
       </p>
     </div>
   </div>

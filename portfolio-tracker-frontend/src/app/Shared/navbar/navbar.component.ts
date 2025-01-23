@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +9,15 @@ import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angul
 })
 export class NavbarComponent {
 
-  //for dark mode
+  router = inject(Router);
+  //for logout
+  onLogout(): void {
+    localStorage.removeItem('stockUser');
+    this.router.navigateByUrl('/home/login');
+    window.location
+  }
+  
+  //for dark mode 
   darkMode = false; // Toggle state
 
   toggleDarkMode(): void {

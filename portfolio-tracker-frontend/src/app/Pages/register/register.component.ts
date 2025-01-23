@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { MasterService } from '../../services/master.service';
 
 @Component({
   selector: 'app-register',
@@ -9,27 +10,25 @@ import { RouterLink } from '@angular/router';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  name: string = '';
-  email: string = '';
-  password: string = '';
-  confirmPassword: string = '';
+  
+  registrationObj:any = {
+    "email": "",
+    "fullName": "",
+    "password": ""
+  };
+  
 
-  constructor() {}
+  MasterSrv = inject(MasterService);
+    router = inject(Router);
 
   onSubmit(): void {
-    if (!this.name || !this.email || !this.password || !this.confirmPassword) {
-      alert('Please fill all the fields!');
-      return;
-    }
-    if (this.password !== this.confirmPassword) {
-      alert('Passwords do not match!');
-      return;
-    }
-    console.log('Registration form submitted!', {
-      name: this.name,
-      email: this.email,
-      password: this.password,
-    });
-    alert('Registration successful!'); // Replace with your registration logic
+      this.MasterSrv.register(this.registrationObj).subscribe((res:any) => {
+        if(res.id != null){
+          alert('Registration successful! Login Now!');
+          this.router.navigateByUrl('/home/login');
+        }else{
+          alert('Something went wrong!');
+        }
+      });
   }
 }
