@@ -11,7 +11,7 @@ export class MasterService {
 
   constructor(private http: HttpClient) { }
 
-  apiURL: String = 'http://3.110.54.57:8080/api/';
+  apiURL: String = 'https://3.110.54.57:8443/api/';
 
   getCurrentPrice(ticker: string) {
     const url = `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${this.apiKey}`;
