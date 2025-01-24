@@ -16,7 +16,7 @@ import com.task.portfoliotracker.services.UserService;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*", allowCredentials = "true")
+@CrossOrigin(origins = "https://kameswarpanda.github.io", allowedHeaders = "*", allowCredentials = "true")
 public class UserController {
     @Autowired
     private UserService userService;
