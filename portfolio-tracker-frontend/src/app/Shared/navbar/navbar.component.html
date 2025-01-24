@@ -27,8 +27,12 @@
           <a class="nav-link" routerLink="/portfolio-details" routerLinkActive="active-link">Portfolios</a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" (click)="onLogout()" routerLinkActive="active-link">Logout</a>
+        </li>
+
         <!-- Profile Dropdown -->
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -41,11 +45,11 @@
             <i class="fas fa-user-circle"></i> Profile
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-            <!-- <li><a class="dropdown-item" href="#">My Details</a></li>
-            <li><a class="dropdown-item" href="#">Account</a></li> -->
+            <li><a class="dropdown-item" href="#">My Details</a></li>
+            <li><a class="dropdown-item" href="#">Account</a></li>
             <li><a class="dropdown-item" href="#" (click)="onLogout()">Logout</a></li>
           </ul>
-        </li>
+        </li> -->
 
         <!-- Dark Mode Toggle -->
         <li class="nav-item">
