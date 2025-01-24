@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stocks',
@@ -17,7 +18,7 @@ export class StocksComponent {
   showAll = false; // Controls "See More" visibility
   isLoading = true;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     const stockSymbols = [
@@ -57,13 +58,13 @@ export class StocksComponent {
 
     Promise.all(requests).then((results) => {
       this.stocks = results;
-      this.visibleStocks = this.stocks.slice(0, 6); // Show initial 6 stocks
+      this.visibleStocks = this.stocks.slice(0, 7); // Show initial 6 stocks
       this.topGainers = [...this.stocks]
         .sort((a, b) => b.changePercent - a.changePercent)
-        .slice(0, 6);
+        .slice(0, 7);
       this.topLosers = [...this.stocks]
         .sort((a, b) => a.changePercent - b.changePercent)
-        .slice(0, 6);
+        .slice(0, 7);
       this.isLoading = false;
     });
   }
@@ -71,5 +72,10 @@ export class StocksComponent {
   toggleStocks(): void {
     this.showAll = !this.showAll;
     this.visibleStocks = this.showAll ? this.stocks : this.stocks.slice(0, 6);
+  }
+
+  viewStockDetails(stock: any): void {
+    localStorage.setItem('selectedStock', JSON.stringify(stock));
+    this.router.navigateByUrl('/stock-details');
   }
 }

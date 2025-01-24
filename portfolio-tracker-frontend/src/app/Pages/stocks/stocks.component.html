@@ -12,7 +12,7 @@
     <!-- Top Gainers Section -->
     <h3 class="text-success mb-3">Top Gainers</h3>
     <div class="d-flex flex-row flex-nowrap overflow-auto">
-      <div *ngFor="let stock of topGainers" class="card stock-card mx-2">
+      <div *ngFor="let stock of topGainers" class="card stock-card mx-2 col-sm-6 col-md-3" (click)="viewStockDetails(stock)">
         <img [src]="stock.logo" alt="{{ stock.name }} Logo" class="card-img-top stock-logo" />
         <div class="card-body text-center">
           <h6 class="card-title">{{ stock.name }}</h6>
@@ -26,7 +26,7 @@
     <!-- Top Losers Section -->
     <h3 class="text-danger mb-3 mt-4">Top Losers</h3>
     <div class="d-flex flex-row flex-nowrap overflow-auto">
-      <div *ngFor="let stock of topLosers" class="card stock-card mx-2">
+      <div *ngFor="let stock of topLosers" class="card stock-card mx-2 col-sm-6 col-md-3" (click)="viewStockDetails(stock)">
         <img [src]="stock.logo" alt="{{ stock.name }} Logo" class="card-img-top stock-logo" />
         <div class="card-body text-center">
           <h6 class="card-title">{{ stock.name }}</h6>
@@ -40,7 +40,7 @@
     <!-- All Stocks Section -->
     <h3 class="text-center mt-4">All Stocks</h3>
     <div class="d-flex flex-row flex-nowrap overflow-auto">
-      <div *ngFor="let stock of visibleStocks" class="card stock-card mx-2 col-sm-6 col-md-3">
+      <div *ngFor="let stock of visibleStocks" class="card stock-card mx-2 col-sm-6 col-md-3" (click)="viewStockDetails(stock)">
         <img [src]="stock.logo" alt="{{ stock.name }} Logo" class="card-img-top stock-logo" />
         <div class="card-body text-center">
           <h6 class="card-title">{{ stock.name }}</h6>

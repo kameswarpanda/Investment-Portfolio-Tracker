@@ -23,7 +23,7 @@ export class LoginComponent {
     this.MasterSrv.login(this.loginObj).subscribe((res:any  ) => {
       if(res.result){
         localStorage.setItem('stockUser', JSON.stringify(res.userId));
-        this.router.navigateByUrl('/portfolio-details');
+        this.router.navigateByUrl('/stocks');
       }else{
         alert('incorrect email or password');
       }

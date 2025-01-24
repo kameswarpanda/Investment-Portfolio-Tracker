@@ -2,7 +2,7 @@
   <div class="row">
     <!-- Left: Stock List Table -->
     <div class="col-md-8">
-      <h3 class="text-primary mb-3">Stock List</h3>
+      <h3 class="text-primary mb-3">Your Stock Holding</h3>
       <div class="d-flex justify-content-between mb-3">
         <input
           type="text"
@@ -10,13 +10,12 @@
           placeholder="Search Stocks"
           [(ngModel)]="searchTerm"
         />
-        <button class="btn btn-success" (click)="showAddForm()">Add Stock</button>
       </div>
       <table class="table table-bordered table-hover shadow-sm">
         <thead class="thead-dark">
           <tr>
-            <th (click)="sortStocks('name')">Stock Name</th>
-            <th (click)="sortStocks('symbol')">Ticker Symbol</th>
+            <th (click)="sortStocks('stockName')">Stock Name</th>
+            <th (click)="sortStocks('ticker')">Ticker Symbol</th>
             <th (click)="sortStocks('quantity')">Quantity</th>
             <th (click)="sortStocks('buyPrice')">Buy Price</th>
             <th>Current Price</th>
@@ -26,12 +25,12 @@
         <tbody>
           <tr
             *ngFor="let stock of filteredStocks"
-            [class.table-warning]="stock.isEditing"
+            (click)="editStock(stock)"
           >
-            <td>{{ stock.name }}</td>
-            <td>{{ stock.symbol }}</td>
+            <td>{{ stock.stockName }}</td>
+            <td>{{ stock.ticker }}</td>
             <td>{{ stock.quantity }}</td>
-            <td>{{ stock.buyPrice | currency:'USD' }}</td>
+            <td>{{ stock.currentPrice | currency:'USD' }}</td>
             <td>{{ stock.currentPrice | currency:'USD' }}</td>
             <td>
               <button
@@ -56,7 +55,7 @@
     <div class="col-md-4">
       <div class="card shadow-sm">
         <div class="card-header bg-primary text-white">
-          {{ isEditing ? 'Edit Stock' : 'Add Stock' }}
+          {{ 'Edit Stock' }}
         </div>
         <div class="card-body">
           <form (ngSubmit)="saveStock()">
@@ -66,9 +65,10 @@
                 type="text"
                 id="name"
                 class="form-control"
-                [(ngModel)]="currentStock.name"
+                [(ngModel)]="currentStock.stockName"
                 name="name"
                 required
+                readonly
               />
             </div>
             <div class="mb-3">
@@ -77,9 +77,10 @@
                 type="text"
                 id="symbol"
                 class="form-control"
-                [(ngModel)]="currentStock.symbol"
+                [(ngModel)]="currentStock.ticker"
                 name="symbol"
                 required
+                readonly
               />
             </div>
             <div class="mb-3">
@@ -94,20 +95,21 @@
               />
             </div>
             <div class="mb-3">
-              <label for="buyPrice" class="form-label">Buy Price</label>
+              <label for="buyPrice" class="form-label">Current Price</label>
               <input
                 type="number"
                 id="buyPrice"
                 class="form-control"
-                [(ngModel)]="currentStock.buyPrice"
+                [(ngModel)]="currentStock.currentPrice"
                 name="buyPrice"
                 required
+                readonly
               />
             </div>
             <button class="btn btn-success w-100" type="submit">
-              {{ isEditing ? 'Update Stock' : 'Add Stock' }}
+              Update Stock
             </button>
-          </form>
+          </form>          
         </div>
       </div>
     </div>
@@ -134,7 +136,7 @@
         ></button>
       </div>
       <div class="modal-body">
-        Are you sure you want to delete stock <b>{{ stockToDelete?.name }}</b>?
+        Are you sure you want to delete stock <b>{{ stockToDelete?.stockName }}</b>?
       </div>
       <div class="modal-footer">
         <button

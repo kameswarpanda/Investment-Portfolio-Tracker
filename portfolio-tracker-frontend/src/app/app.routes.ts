@@ -8,7 +8,8 @@ import { LoginComponent } from './Pages/login/login.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { ForgetPasswordComponent } from './Pages/forget-password/forget-password.component';
 import { StocksComponent } from './Pages/stocks/stocks.component';
-import { StockInfoComponent } from './Pages/stock-info/stock-info.component';
+import { StockDetailsComponent } from './Pages/stock-details/stock-details.component';
+
 
 export const routes: Routes = [
   {
@@ -33,7 +34,7 @@ export const routes: Routes = [
       { path: 'stock-management', component: StockManagementComponent },
       { path: 'portfolio-details', component: PortfolioDetailsComponent },
       { path: 'stocks', component: StocksComponent },
-      { path: 'stock-info', component: StockInfoComponent },
+      { path: 'stock-details', component: StockDetailsComponent },
     ],
   },
 ];
