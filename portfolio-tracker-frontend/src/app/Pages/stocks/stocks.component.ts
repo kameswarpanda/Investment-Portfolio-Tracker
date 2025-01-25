@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stocks',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './stocks.component.html',
   styleUrl: './stocks.component.css'
 })
