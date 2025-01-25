@@ -1,10 +1,11 @@
-<div class="container mt-4">
+<div class="container mt-4 mb-5">
   <h1 class="text-center mb-4">Market Overview</h1>
 
   <!-- Loader -->
   <div *ngIf="isLoading" class="text-center">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
+    <div class="spinner-border text-primary" role="status"></div>
+    <div>
+      <span>Please wait...</span>
     </div>
   </div>
 
@@ -12,8 +13,16 @@
     <!-- Top Gainers Section -->
     <h3 class="text-success mb-3">Top Gainers</h3>
     <div class="d-flex flex-row flex-nowrap overflow-auto">
-      <div *ngFor="let stock of topGainers" class="card stock-card mx-2 col-sm-6 col-md-3" (click)="viewStockDetails(stock)">
-        <img [src]="stock.logo" alt="{{ stock.name }} Logo" class="card-img-top stock-logo" />
+      <div
+        *ngFor="let stock of topGainers"
+        class="card stock-card mx-2 col-sm-6 col-md-3"
+        (click)="viewStockDetails(stock)"
+      >
+        <img
+          [src]="stock.logo"
+          alt="{{ stock.name }} Logo"
+          class="card-img-top stock-logo"
+        />
         <div class="card-body text-center">
           <h6 class="card-title">{{ stock.name }}</h6>
           <p class="card-text">{{ stock.symbol }}</p>
@@ -26,8 +35,16 @@
     <!-- Top Losers Section -->
     <h3 class="text-danger mb-3 mt-4">Top Losers</h3>
     <div class="d-flex flex-row flex-nowrap overflow-auto">
-      <div *ngFor="let stock of topLosers" class="card stock-card mx-2 col-sm-6 col-md-3" (click)="viewStockDetails(stock)">
-        <img [src]="stock.logo" alt="{{ stock.name }} Logo" class="card-img-top stock-logo" />
+      <div
+        *ngFor="let stock of topLosers"
+        class="card stock-card mx-2 col-sm-6 col-md-3"
+        (click)="viewStockDetails(stock)"
+      >
+        <img
+          [src]="stock.logo"
+          alt="{{ stock.name }} Logo"
+          class="card-img-top stock-logo"
+        />
         <div class="card-body text-center">
           <h6 class="card-title">{{ stock.name }}</h6>
           <p class="card-text">{{ stock.symbol }}</p>
@@ -40,12 +57,25 @@
     <!-- All Stocks Section -->
     <h3 class="text-center mt-4">All Stocks</h3>
     <div class="d-flex flex-row flex-nowrap overflow-auto">
-      <div *ngFor="let stock of visibleStocks" class="card stock-card mx-2 col-sm-6 col-md-3" (click)="viewStockDetails(stock)">
-        <img [src]="stock.logo" alt="{{ stock.name }} Logo" class="card-img-top stock-logo" />
+      <div
+        *ngFor="let stock of visibleStocks"
+        class="card stock-card mx-2 col-sm-6 col-md-3"
+        (click)="viewStockDetails(stock)"
+      >
+        <img
+          [src]="stock.logo"
+          alt="{{ stock.name }} Logo"
+          class="card-img-top stock-logo"
+        />
         <div class="card-body text-center">
           <h6 class="card-title">{{ stock.name }}</h6>
           <p class="card-text">{{ stock.symbol }}</p>
-          <p [ngClass]="{'text-success': stock.change >= 0, 'text-danger': stock.change < 0}">
+          <p
+            [ngClass]="{
+              'text-success': stock.change >= 0,
+              'text-danger': stock.change < 0
+            }"
+          >
             {{ stock.changePercent }}%
           </p>
           <p>Price: ${{ stock.price }}</p>
@@ -56,9 +86,8 @@
     <!-- See More Button -->
     <div class="text-center mt-4">
       <button class="btn btn-primary" (click)="toggleStocks()">
-        {{ showAll ? 'Show Less' : 'See More' }}
+        {{ showAll ? "Show Less" : "See More" }}
       </button>
     </div>
-
   </div>
 </div>
