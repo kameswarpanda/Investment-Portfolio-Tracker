@@ -7,9 +7,10 @@ The Stock Portfolio Management Application is a comprehensive system for trackin
 
 ## Key Components
 1. **Frontend**: Angular-based, dynamic dashboard with responsive charts using Chart.js.
-2. **Backend**: Spring Boot REST APIs with Swagger documentation.
+2. **Backend**: Java, Spring Boot REST APIs with Swagger documentation.
 3. **Database**: MySQL for data persistence, supporting CRUD operations.
 4. **Third-Party Integration**: Fetch real-time stock prices using APIs like Finnhub.
+5. **Application Deployment**: RDs for MySQL, Heroku for Backend app and GitHib pages for Frontend app.
 
 ---
 
@@ -17,7 +18,7 @@ The Stock Portfolio Management Application is a comprehensive system for trackin
 - **Portfolio Management**: Add, update, delete, and view stocks.
 - **Live Stock Data**: Real-time updates of stock prices.
 - **Visual Analytics**: Pie charts to display portfolio distribution.
-- **Secure Authentication**: User login and token-based session management.
+- **Secure Authentication**: User login and register management.
 
 ---
 
@@ -25,17 +26,15 @@ The Stock Portfolio Management Application is a comprehensive system for trackin
 
 ### Backend APIs
 - **User Authentication**
-  - `POST /api/v1/auth/register` - Register a new user.
-  - `POST /api/v1/auth/login` - Authenticate and get JWT.
+  - `POST /api/users/register` - Register a new user.
+  - `POST /api/users/login` - Authenticate and get JWT.
 - **Portfolio Operations**
-  - `GET /api/v1/portfolio/{userId}` - Fetch portfolio details.
-  - `POST /api/v1/portfolio` - Add stock to portfolio.
-  - `PUT /api/v1/portfolio/{stockId}` - Update stock details.
-  - `DELETE /api/v1/portfolio/{stockId}` - Remove stock from portfolio.
-- **Stock Data**
-  - `GET /api/v1/stock/{ticker}` - Fetch live stock price.
+  - `GET /api/stocks/{userId}` - Fetch portfolio details.
+  - `POST /api/stocks/{userId}` - Add stock to portfolio.
+  - `PUT /api/stocks/{userId}/{stockId}` - Update stock details.
+  - `DELETE /api/stocks/{userId}/{stockId}` - Remove stock from portfolio.
 - **API Documentation**
-  - Swagger: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+  - Swagger: [https://evening-beyond-95642-0f9a93797e2c.herokuapp.com/swagger-ui/index.html](https://evening-beyond-95642-0f9a93797e2c.herokuapp.com/swagger-ui/index.html)
 
 ---
 
@@ -51,14 +50,14 @@ The Stock Portfolio Management Application is a comprehensive system for trackin
 ### Backend Setup
 1. Clone the backend repo and navigate to its folder.
    ```bash
-   git clone <backend-repo-url>
-   cd backend
+   git clone https://github.com/kameswarpanda/Portfolio-Tracker-Backend.git
+   cd Portfolio-Tracker-Backend
    ```
 2. Configure the application.properties file:
    ```bash
    spring.datasource.url=jdbc:mysql://localhost:3306/stock_portfolio
-   spring.datasource.username=root
-   spring.datasource.password=yourpassword
+   spring.datasource.username=${MYSQL_USER_NAME}
+   spring.datasource.password=${MYSQL_PASSWORD}
    ```
 3. Run Spring Boot Server
    ```bash
@@ -71,19 +70,16 @@ The Stock Portfolio Management Application is a comprehensive system for trackin
 ### Frontend Setup
 1. Clone the frontend repo and navigate to its folder.
    ```bash
-   git clone <frontend-repo-url>
-   cd frontend
+   git clone https://github.com/kameswarpanda/Investment-Portfolio-Tracker.git
+   cd Investment-Portfolio-Tracker
    ```
 2. Install Dependencies.
    ```bash
    npm install
    ```
-3. Update environment.ts
+3. Update master.service.ts
    ```bash
-   export const environment = {
-   apiUrl: 'http://localhost:8080/api/v1',
-   production: false
-   };
+   apiUrl: 'http://localhost:8080/api/'
    ```
 4. Run the angular APP
     ```bash
@@ -122,7 +118,7 @@ CREATE DATABASE stock_portfolio;
 ---
 
 ## Deployment
-1. Backend: Deploy the Spring Boot .jar on AWS EC2, Heroku, or similar platforms.
+1. Backend: Deploy the MySQL database, Spring Boot .jar on AWS EC2, Heroku, or similar platforms.
 2. Frontend: Use ng build --prod to generate static files, then host on platforms like Nginx, Firebase Hosting, or Vercel.
 
 ---
@@ -153,6 +149,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [Finnhub API](https://finnhub.io/) for providing stock market data.
 - [Angular](https://angular.io/) for the framework.
 - [Chart.js](https://www.chartjs.org/) for chart visualization.
+- [SpringBoot](https://start.spring.io/) for springboot application
 
 ---
 
