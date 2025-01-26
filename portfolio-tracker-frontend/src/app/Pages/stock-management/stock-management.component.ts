@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MasterService } from '../../services/master.service';
 import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 
 interface Stock {
   id: number;
@@ -67,28 +68,65 @@ export class StockManagementComponent implements OnInit {
     const userId = localStorage.getItem('stockUser');
     if (this.currentStock) {
       const userId = localStorage.getItem('stockUser');
-      this.masterSvr.updateStock(userId, this.currentStock.id, this.currentStock).subscribe({
-        next: (updatedStock) => {
-          console.log('Stock updated successfully:', updatedStock);
-  
-          // Find the index of the updated stock and replace it in the local array
-          const index = this.stocks.findIndex((s) => s.id === updatedStock.id);
-          if (index !== -1) {
-            this.stocks[index] = updatedStock;
-          }
-  
-          // Show an alert for successful update
-          alert(`Stock "${updatedStock.stockName}" updated successfully!`);
-  
-          // Reset the stockToEdit and close the modal
-          this.currentStock = this.initializeStock();
-          bootstrap.Modal.getInstance(document.getElementById('editModal')!)?.hide();
-        },
-        error: (error) => {
-          console.error('Error updating stock:', error);
-          alert('Failed to update the stock. Please try again.');
-        },
-      });
+      this.masterSvr
+        .updateStock(userId, this.currentStock.id, this.currentStock)
+        .subscribe({
+          next: (updatedStock) => {
+            console.log('Stock updated successfully:', updatedStock);
+
+            // Find the index of the updated stock and replace it in the local array
+            const index = this.stocks.findIndex(
+              (s) => s.id === updatedStock.id
+            );
+            if (index !== -1) {
+              this.stocks[index] = updatedStock;
+            }
+
+            // Show an alert for successful update
+            // alert(`Stock "${updatedStock.stockName}" updated successfully!`);
+
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+              },
+            });
+            Toast.fire({
+              icon: 'success',
+              title: `Stock "${updatedStock.stockName}" updated successfully!`,
+            });
+
+            // Reset the stockToEdit and close the modal
+            this.currentStock = this.initializeStock();
+            bootstrap.Modal.getInstance(
+              document.getElementById('editModal')!
+            )?.hide();
+          },
+          error: (error) => {
+            console.error('Error updating stock:', error);
+            // alert('Failed to update the stock. Please try again.');
+            const Toast = Swal.mixin({
+              toast: true,
+              position: "top-end",
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+              }
+            });
+            Toast.fire({
+              icon: "error",
+              title: "failed to update the stock, please try again."
+            });
+          },
+        });
     }
   }
 
@@ -98,7 +136,9 @@ export class StockManagementComponent implements OnInit {
 
   confirmDelete(stock: Stock): void {
     this.stockToDelete = stock;
-    const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal')!);
+    const deleteModal = new bootstrap.Modal(
+      document.getElementById('deleteModal')!
+    );
     deleteModal.show();
   }
 
@@ -108,13 +148,31 @@ export class StockManagementComponent implements OnInit {
       this.masterSvr.deleteStock(userId, this.stockToDelete.id).subscribe({
         next: (response: string) => {
           console.log('Delete successful:', response);
-          alert('Stock deleted successfully!');
+          // alert('Stock deleted successfully!');
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "success",
+            title: "stock deleted successfully!"
+          });
+          
           // Remove the stock from the local list
           this.stocks = this.stocks.filter((s) => s !== this.stockToDelete);
           this.stockToDelete = null;
-  
+
           // Hide the modal
-          bootstrap.Modal.getInstance(document.getElementById('deleteModal')!)?.hide();
+          bootstrap.Modal.getInstance(
+            document.getElementById('deleteModal')!
+          )?.hide();
         },
         error: (error) => {
           console.error('Error deleting stock:', error);
@@ -122,7 +180,6 @@ export class StockManagementComponent implements OnInit {
       });
     }
   }
-  
 
   sortStocks(key: keyof Stock): void {
     this.stocks.sort((a, b) => (a[key] > b[key] ? 1 : -1));

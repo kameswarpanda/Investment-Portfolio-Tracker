@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { MasterService } from '../../services/master.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-stock-details',
@@ -57,7 +58,7 @@ export class StockDetailsComponent {
   }
 
   MasterSrv = inject(MasterService);
-    
+
   saveStock() {
     const stockData = {
       ticker: this.selectedStock.symbol,
@@ -66,12 +67,49 @@ export class StockDetailsComponent {
       quantity: this.selectedStock.quantity,
     };
     console.log(stockData);
-    if (this.selectedStock.quantity == 0 || this.selectedStock.quantity == null) {
-      alert('Please enter a valid quantity');
+    if (
+      this.selectedStock.quantity == 0 ||
+      this.selectedStock.quantity == null
+    ) {
+      // alert('Please enter a valid quantity');
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: 'error',
+        title: 'please enter a valid quantity.',
+      });
+
       return;
-    }else{
+    } else {
       this.MasterSrv.addStock(this.userId, stockData).subscribe(() => {
-        alert('Stock added successfully!');
+        // alert('Stock added successfully!');
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: 'success',
+          title: 'stock added successfully!',
+        });
+
         this.router.navigateByUrl('/dashboard');
       });
     }
