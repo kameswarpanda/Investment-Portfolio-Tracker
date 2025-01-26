@@ -1,10 +1,17 @@
 <div class="container bg-light shadow rounded mt-4 mb-5">
+  <div class="text-start pt-2 pb-2">
+    <a class="btn fw-bold btn-outline-secondary" routerLink="/stocks">Explore</a>
+  </div>
   <!-- Total Portfolio Value -->
   <div class="row">
     <div class="col text-center">
-      <h1 class="text-primary fw-bold display-5 animate__animated animate__fadeInDown">Total Portfolio Value</h1>
+      <h1
+        class="text-primary fw-bold display-5 animate__animated animate__fadeInDown"
+      >
+        Total Portfolio Value
+      </h1>
       <h2 class="text-success fw-bold animate__animated animate__zoomIn">
-        {{ totalPortfolioValue | currency:'USD' }}
+        {{ totalPortfolioValue | currency : "USD" }}
       </h2>
     </div>
   </div>
@@ -23,7 +30,9 @@
   <!-- Portfolio Table -->
   <div class="row mt-5">
     <div class="col">
-      <h3 class="text-secondary fw-bold animate__animated animate__fadeInUp">Portfolio</h3>
+      <h3 class="text-secondary fw-bold animate__animated animate__fadeInUp">
+        Portfolio
+      </h3>
       <table class="table table-bordered table-hover shadow-sm rounded">
         <thead class="table-dark">
           <tr>
@@ -34,18 +43,22 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let stock of stocks" class="table-row-hover animate__animated animate__fadeInUp">
+          <tr
+            *ngFor="let stock of stocks"
+            class="table-row-hover animate__animated animate__fadeInUp"
+          >
             <td>{{ stock.ticker }}</td>
             <td>{{ stock.quantity }}</td>
-            <td>{{ stock.currentPrice | currency:'USD' }}</td>
-            <td>{{ (stock.currentPrice * stock.quantity) | currency:'USD' }}</td>
+            <td>{{ stock.currentPrice | currency : "USD" }}</td>
+            <td>
+              {{ stock.currentPrice * stock.quantity | currency : "USD" }}
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  
   <div class="container mt-4">
     <!-- Portfolio Distribution -->
     <div class="row">
@@ -56,27 +69,48 @@
       <div class="col-md-8">
         <h4 class="text-primary">Portfolio Summary</h4>
         <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between align-items-center">
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
             Total Stocks
-            <span class="badge bg-primary rounded-pill">{{ stocks.length }}</span>
+            <span class="badge bg-primary rounded-pill">{{
+              stocks.length
+            }}</span>
           </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
             Total Value
-            <span class="badge bg-success rounded-pill">{{ totalPortfolioValue | currency:'USD' }}</span>
+            <span class="badge bg-success rounded-pill">{{
+              totalPortfolioValue | currency : "USD"
+            }}</span>
           </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
             Top Performing Stock
-            <span class="badge bg-danger rounded-pill">{{ topPerformingStock?.ticker || 'N/A' }}</span>
+            <span class="badge bg-danger rounded-pill">{{
+              topPerformingStock?.ticker || "N/A"
+            }}</span>
           </li>
         </ul>
         <div class="row mt-4">
           <div class="col text-center">
-            <button class="btn btn-secondary me-2" (click)="navigateTo('/portfolio-details')">Portfolio Details</button>
-            <button class="btn btn-warning" (click)="navigateTo('/stock-management')">Go to Stock Management</button>
+            <button
+              class="btn btn-secondary me-2 mb-2"
+              (click)="navigateTo('/portfolio-details')"
+            >
+              Portfolio Details
+            </button>
+            <button
+              class="btn btn-warning mb-2"
+              (click)="navigateTo('/stock-management')"
+            >
+              Go to Stock Management
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
 </div>

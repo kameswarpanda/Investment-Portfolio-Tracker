@@ -3,7 +3,9 @@
     <!-- Header -->
     <div class="col text-center">
       <h1 class="text-primary">Portfolio Details</h1>
-      <p class="text-muted">Insights into your stock holdings and performance</p>
+      <p class="text-muted">
+        Insights into your stock holdings and performance
+      </p>
     </div>
   </div>
 
@@ -14,13 +16,20 @@
         <div class="card-body">
           <h5 class="card-title text-success">{{ stock.stockName }}</h5>
           <p class="card-text">
-            <strong>Ticker Symbol:</strong> {{ stock.ticker }} <br>
-            <strong>Quantity:</strong> {{ stock.quantity }} <br>
-            <strong>Buy Price:</strong> {{ stock.buyPrice | currency:'USD' }} <br>
-            <strong>Current Price:</strong> {{ stock.currentPrice | currency:'USD' }} <br>
+            <strong>Ticker Symbol:</strong> {{ stock.ticker }} <br />
+            <strong>Quantity:</strong> {{ stock.quantity }} <br />
+            <strong>Buy Price:</strong> {{ stock.buyPrice | currency : "USD" }}
+            <br />
+            <strong>Current Price:</strong>
+            {{ stock.currentPrice | currency : "USD" }} <br />
             <strong>Percentage Gain/Loss:</strong>
-            <span [ngClass]="{ 'text-success': stock.gainLoss >= 0, 'text-danger': stock.gainLoss < 0 }">
-              {{ stock.gainLoss | number:'1.2-2' }}%
+            <span
+              [ngClass]="{
+                'text-success': stock.gainLoss >= 0,
+                'text-danger': stock.gainLoss < 0
+              }"
+            >
+              {{ stock.gainLoss | number : "1.2-2" }}%
             </span>
           </p>
         </div>
@@ -39,8 +48,18 @@
   <!-- Call-to-Actions -->
   <div class="row mt-4">
     <div class="col text-center">
-      <button class="btn btn-primary me-2" (click)="navigateTo('dashboard')">Go to Dashboard</button>
-      <button class="btn btn-secondary" (click)="navigateTo('stock-management')">Go to Stock Management</button>
+      <button
+        class="btn btn-primary me-2 mb-2"
+        (click)="navigateTo('dashboard')"
+      >
+        Go to Dashboard
+      </button>
+      <button
+        class="btn btn-secondary mb-2"
+        (click)="navigateTo('stock-management')"
+      >
+        Go to Stock Management
+      </button>
     </div>
   </div>
 </div>

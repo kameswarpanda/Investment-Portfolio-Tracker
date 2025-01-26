@@ -1,5 +1,8 @@
-<div class="container mt-4">
-  <h1 class="text-center mb-4">Stock Details</h1>
+<div class="container mt-4 mb-5 ">
+  <a routerLink="/stocks" class="text-decoration-none">
+    <h5 class="fw-bold">Stocks</h5>
+  </a>
+  <h1 class="text-center mb-4 mt-2">Stock Details</h1>
 
   <!-- Stock Information and Graph Section -->
   <div class="row justify-content-center align-items-start">
@@ -87,10 +90,10 @@
               />
             </div>
             <div class="text-center mt-4">
-            <button class="btn btn-success me-3" type="submit">
+            <button class="btn btn-success me-3 mb-2" type="submit">
               {{'Add Stock' }}
             </button>
-            <button class="btn btn-secondary" (click)="goBack()">Back</button>
+            <button class="btn btn-secondary mb-2" (click)="goBack()">Back</button>
           </div>
           </form>
         </div>

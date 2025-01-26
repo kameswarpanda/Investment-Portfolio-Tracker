@@ -1,4 +1,4 @@
- /* for nav bar styles */
+/* for nav bar styles */
 /* Navbar Background */
 .custom-navbar {
   background: linear-gradient(90deg, #343a40, #212529);
@@ -24,6 +24,20 @@
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
+.navbar-nav .nav-item .nav-link {
+  display: inline-block; /* Ensure the link takes only the width of its content */
+  width: auto; /* Prevent full-width behavior */
+  padding: 0.5rem 1rem; /* Adjust padding for better spacing */
+  text-align: center; /* Align text properly */
+}
+
+@media (max-width: 992px) {
+  /* Additional styles for mobile-specific behavior */
+  .navbar-nav .nav-item {
+    text-align: center; /* Align links to the left if needed */
+  }
+}
+
 /* Navbar Link Hover Effect */
 .navbar-nav .nav-link:hover {
   color: #4caf50 !important;
@@ -42,7 +56,6 @@
   border: none;
 }
 
-
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .navbar-nav .nav-link {
@@ -57,7 +70,7 @@
 
 /* General Styles */
 .home-container {
-  font-family: 'Poppins', sans-serif; 
+  font-family: "Poppins", sans-serif;
   padding-top: 40px;
   overflow-x: hidden;
 }
@@ -196,12 +209,11 @@
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
     transform: translateY(-20px);
   }
 }
-
-

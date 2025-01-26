@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, Inject, PLATFORM_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { MasterService } from '../../services/master.service';
 
 @Component({
   selector: 'app-stock-details',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './stock-details.component.html',
   styleUrl: './stock-details.component.css',
 })

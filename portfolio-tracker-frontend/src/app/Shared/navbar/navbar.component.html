@@ -16,23 +16,22 @@
       <ul class="navbar-nav ms-auto">
         <!-- Navigation Links -->
         <li class="nav-item">
-          <a class="nav-link" routerLink="/stocks" routerLinkActive="active-link">Stocks</a>
+          <a class="nav-link" routerLink="/stocks" 
+          (click)="closeNavbar()" routerLinkActive="active-link">Stocks</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active-link">Dashboard</a>
+          <a class="nav-link" routerLink="/dashboard" 
+          (click)="closeNavbar()" routerLinkActive="active-link">Dashboard</a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" routerLink="/portfolio-details" routerLinkActive="active-link">Portfolios</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" (click)="onLogout()" routerLinkActive="active-link">Logout</a>
+          <a class="nav-link" routerLink="/portfolio-details" 
+          (click)="closeNavbar()" routerLinkActive="active-link">Portfolios</a>
         </li>
 
         <!-- Profile Dropdown -->
-        <!-- <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -45,11 +44,11 @@
             <i class="fas fa-user-circle"></i> Profile
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-            <li><a class="dropdown-item" href="#">My Details</a></li>
-            <li><a class="dropdown-item" href="#">Account</a></li>
-            <li><a class="dropdown-item" href="#" (click)="onLogout()">Logout</a></li>
+            <!-- <li><a class="dropdown-item" href="#">My Details</a></li>
+            <li><a class="dropdown-item" href="#">Account</a></li> -->
+            <li class="nav-item"><a class="nav-link logout" (click)="closeNavbar()" (click)="onLogout()">Logout</a></li>
           </ul>
-        </li> -->
+        </li>
 
         <!-- Dark Mode Toggle -->
         <li class="nav-item">

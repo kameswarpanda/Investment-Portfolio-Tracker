@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MasterService } from '../../services/master.service';
+import { RouterLink } from '@angular/router';
 
 interface Stock {
   id: number;
@@ -16,7 +17,7 @@ declare var bootstrap: any;
 
 @Component({
   selector: 'app-stock-management',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './stock-management.component.html',
   styleUrl: './stock-management.component.css',
 })
